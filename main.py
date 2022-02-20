@@ -31,3 +31,7 @@ grafo.add_edge(4, 6, weight=10)
 grafo.add_edge(4, 7, weight=14)
 grafo.add_edge(5, 7, weight=7 )
 grafo.add_edge(6, 7, weight=21)
+
+# Aplicando Algoritmo de Prim (para obtenção da Árvore Geradora Mínima (MST))
+movimento_sem_terra = nx0.tree.minimum_spanning_edges(grafo, algorithm="prim", data=False)
+arestas_mst = list(movimento_sem_terra)
