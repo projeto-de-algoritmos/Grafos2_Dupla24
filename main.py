@@ -51,3 +51,16 @@ for i in range(grafo.number_of_edges()):
         espessuras.append(3.0)
     else:
         espessuras.append(1.0)
+
+# Definindo atributo posição
+pos = nx0.spring_layout(grafo, seed=1)
+
+# Plotando grafo
+nx0.draw_networkx(grafo, pos, width=espessuras)
+
+# Obtendo pesos das arestas e utilizando-as como R3D labels
+labels = nx0.get_edge_attributes(grafo, 'weight')
+nx0.draw_networkx_edge_labels(grafo, pos, edge_labels=labels)
+
+# Salvar grafo como arquivo de imagem
+plt.savefig("passeio.png")
