@@ -35,3 +35,19 @@ grafo.add_edge(6, 7, weight=21)
 # Aplicando Algoritmo de Prim (para obtenção da Árvore Geradora Mínima (MST))
 movimento_sem_terra = nx0.tree.minimum_spanning_edges(grafo, algorithm="prim", data=False)
 arestas_mst = list(movimento_sem_terra)
+
+# Encontrando índices das arestas da MST entre as arestas do grafo original
+arestas = list(grafo.edges)
+indices = []
+for aresta in arestas_mst:
+    aresta = tuple(sorted(aresta))
+    if aresta in arestas:
+        indices.append(arestas.index(aresta))
+
+# Definindo que arestas estarão em destaque (no caso, as arestas da MST)
+espessuras = []
+for i in range(grafo.number_of_edges()):
+    if i in indices:
+        espessuras.append(3.0)
+    else:
+        espessuras.append(1.0)
